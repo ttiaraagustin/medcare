@@ -1,28 +1,7 @@
-version: '3.8'
-
 services:
-  web:
-    build: .
-    container_name: laravel-web
-    ports:
-      - "8080:80"  # Laravel diakses via http://localhost:8080
+  app:
+    image: ttiaraagustin/medcare:1.0.0  # Nama image yang ingin digunakan
     volumes:
-      - .:/var/www/html
-    depends_on:
-      - mysql
-
-  mysql:
-    image: mysql:8.0
-    container_name: laravel-db
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: medcare
-      MYSQL_USER: root
-      MYSQL_PASSWORD: ""  # Sama seperti di .env
+      - .:/app  # Memetakan direktori lokal saat ini ke direktori /app di dalam kontainer
     ports:
-      - "3306:3306"
-    volumes:
-      - dbdata:/var/lib/mysql
-
-volumes:
-  dbdata:
+      - "3000:3000"
