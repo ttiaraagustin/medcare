@@ -4,6 +4,9 @@ FROM php:8.2-apache
 # Menginstal ekstensi mysqli
 RUN docker-php-ext-install mysqli
 
+# Menginstal Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 # Menetapkan direktori kerja di dalam container
 WORKDIR /var/www/html
 
